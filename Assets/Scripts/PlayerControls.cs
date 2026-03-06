@@ -21,15 +21,6 @@ public class PlayerController : MonoBehaviour {
 	{
 		// Assign the Rigidbody component to our private rb variable
 		rb = GetComponent<Rigidbody>();
-
-		// Set the count to zero 
-		count = 0;
-
-		// Run the SetCountText function to update the UI (see below)
-		SetCountText ();
-
-		// Set the text property of our Win Text UI to an empty string, making the 'You Win' (game over message) blank
-		winText.text = "";
 	}
 
 	// Each physics step..
@@ -56,26 +47,6 @@ public class PlayerController : MonoBehaviour {
 		{
 			// Make the other game object (the pick up) inactive, to make it disappear
 			other.gameObject.SetActive (false);
-
-			// Add one to the score variable 'count'
-			count = count + 1;
-
-			// Run the 'SetCountText()' function (see below)
-			SetCountText ();
-		}
-	}
-
-	// Create a standalone function that can update the 'countText' UI and check if the required amount to win has been achieved
-	void SetCountText()
-	{
-		// Update the text field of our 'countText' variable
-		countText.text = "Count: " + count.ToString ();
-
-		// Check if our 'count' is equal to or exceeded 20
-		if (count >= 1) 
-		{
-			// Set the text value of our 'winText'
-			winText.text = "You Win!";
 		}
 	}
 }
