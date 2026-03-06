@@ -21,6 +21,14 @@ public class PlayerController : MonoBehaviour {
 	{
 		// Assign the Rigidbody component to our private rb variable
 		rb = GetComponent<Rigidbody>();
+
+		// Set the count to zero 
+		count = 0;
+
+		// Run the SetCountText function to update the UI (see below)
+		SetCountText ();
+
+		winText.text = "";
 	}
 
 	// Each physics step..
@@ -47,6 +55,25 @@ public class PlayerController : MonoBehaviour {
 		{
 			// Make the other game object (the pick up) inactive, to make it disappear
 			other.gameObject.SetActive (false);
+
+			// Add one to the score variable 'count'
+			count = count + 1;
+
+			// Run the 'SetCountText()' function (see below)
+			SetCountText ();
+		}
+	}
+
+	void SetCountText()
+
+	{
+		// Update the text field of our 'countText' variable
+		countText.text = "Count: " + count.ToString ();
+
+		// Check if our 'count' is equal to or exceeded 20
+		if (count >= 3)
+		{
+		winText.text = "You Win!";
 		}
 	}
 }
